@@ -1,4 +1,4 @@
-# SmartMet-server for AURORA Clima project (IN PROGRESS)
+# SmartMet-server for AURORA Clima project
 
 SmartMet Server is a data and product server which provides acces to both observation and forecast data. It is used for data services and product generation. Smartmet Server can read input from various sources and it provides several ouput interfaces and formats. For more detailed description, see the [SmartMet Server wiki pages](https://github.com/fmidev/smartmet-server/wiki). The setup used for AURORA is the same as in https://github.com/fmidev/harvesterseasons-smartmet/ installed in two different machines based on sponsored computing resources from WEkEO and EuroHPC.
 
@@ -36,8 +36,10 @@ Tallinn also requested for sea surface temperature and sea surface height.
 ## Climate prediction models
 
 20 models were fetched to be bias-adjusted/downscaled with ERA5 over the period 1995 to 2024. 
+The script doing the bias-adjustment is ![ba-cmip6-ensmble.sh](ba-cmip6-ensemble.sh). 
+First climate model historical data 1995-2014 are merged with ssp245 data 2015-2024. This data is then substracted with ERA5 timeseries of the same period at monthly time steps.
 
-| Model | evspsbl | hur | pr | psl | sfcWind | tas | mn2t24 | mx2t24 |
+| Model | evaporation - evspsbl | relative humidity - hur | precipitation - pr | sea level pressure - psl | wind speed at 10m - sfcWind | air temperature at 2m - tas | minimum tas - mn2t24 | maximum tas - mx2t24 |
 |-------|---------|-----|----|----|---------|-----|--------|--------|
 | AWI-CM-1-1-MR | 1 | 1 | 1 | 1 | 1 | 1 | 1 | 1 |
 | BCC-CSM2-MR | 2 | - | 2 | 2 | 2 | 2 | 2 | 2 |
@@ -69,7 +71,7 @@ The service location that starts the HTTP request query is **urban.geoss.space**
 
 An example response for this query is shown below: 
 
-![timeseries output](https://github.com/fmidev/AURORA-smartmet/blob/main/example_timeseries_RR-M.png)
+![timeseries output](https://github.com/fmidev/harmonia-smartmet/blob/main/example_timeseries_RR-M.png)
 
 For more information and examples of the usage of the TimeSeries plugin, see SmartMet Server [Timeseries-plugin Wiki pages](https://github.com/fmidev/smartmet-plugin-timeseries/wiki). 
 
@@ -87,4 +89,3 @@ Available WMS 'LAYERS' can be checked with the GetCapabilities request as follow
 
 # A new API for sophisticated data retrieval OGC EDR Environmental Data Retrieval
 https://ogcapi.ogc.org/edr/ is a new API to get data in CoverageJSON or GeoJson formats with a restful service. Check out https://urban.geoss.space/edr/collections for this cool new feature.
-retrie
