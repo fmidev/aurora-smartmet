@@ -18,7 +18,16 @@ ECSF and ECBSF seasonal forecasts are available once per month for 215 daily for
 
 In addition there will be a highresolution (1km or better) temperature product from the producer AURORA as the result from the ML model to reveal Urban Heat Islands.
 
-To utilize datasets shown on this service, the SmartMet Server TimeSeries plugin can be used.
+All original data was ingested from the Copernicus Climate Change Service C3S data store or processed by FMI on-site. To utilize datasets shown on this service, the SmartMet Server TimeSeries plugin can be used.
+
+Provenance table:
+|Producer|C3S data set|Url to grid-gui|Url to dataset|
+|-----|-----|-----|-----|
+|ERA5|Copernicus C3S|https://urban.geoss.space/grid-gui?session=bl=1;cl=Grey;cm=Temperature%20(240K..341K);f=;fn=;ft=;g=12;gm=;hu=128;k=T2-K:ECBSF:5022:1:0:1:0;l=;lb=DarkSlateGrey;lcp=1;lm=LightGrey;lsl=128;lsp=2;lss=384;lt=;m=0;max=64;mi=Default;min=2;op=255;p=;pg=main;pi=11;pl=;pn=ERA5;pre=Image;pro=;sa=60;sc=DarkSlateGrey;scp=1;sm=LightCyan;ssl=128;ssp=2;sss=384;st=14;t=;tg=;tgt=Year;u=;xx=;yy=;&p=T2-K|https://cds.climate.copernicus.eu//datasets/reanalysis-era5-single-levels-timeseriesdatasets/|
+|ECENS|ECMWF ensemble forecasts|https://urban.geoss.space/grid-gui?session=bl=1;cl=Grey;cm=Temperature%20(240K..341K);f=;fn=;ft=;g=758;gm=;hu=128;k=T2-K:ECBSF:5022:1:0:1:0;l=;lb=DarkSlateGrey;lcp=1;lm=LightGrey;lsl=128;lsp=2;lss=384;lt=;m=0;max=64;mi=Default;min=2;op=255;p=;pg=main;pi=21;pl=;pn=ECENS;pre=Image;pro=;sa=60;sc=DarkSlateGrey;scp=1;sm=LightCyan;ssl=128;ssp=2;sss=384;st=14;t=;tg=;tgt=Year;u=;xx=;yy=;&p=T2-K|https://www.ecmwf.int/en/forecasts/datasets/set-iii from 12 UTC run available at night of the next day|
+|ECSF|C3S seasonal forecasts|https://urban.geoss.space/grid-gui?session=bl=1;cl=Grey;cm=Temperature%20(240K..341K);f=;fn=;ft=;g=752;gm=;hu=128;k=T2-K:ECBSF:5022:1:0:1:0;l=;lb=DarkSlateGrey;lcp=1;lm=LightGrey;lsl=128;lsp=2;lss=384;lt=;m=0;max=64;mi=Default;min=2;op=255;p=;pg=main;pi=18;pl=;pn=ECSF;pre=Image;pro=;sa=60;sc=DarkSlateGrey;scp=1;sm=LightCyan;ssl=128;ssp=2;sss=384;st=14;t=;tg=;tgt=Year;u=;xx=;yy=;&p=T2-K|https://cds.climate.copernicus.eu/datasets/seasonal-postprocessed-single-levels on the 9th day of each month|
+|ECBSF|C3S bias-adjusted seasonal forecasts with original data above. bias adjustment with ERA5-Land|https://urban.geoss.space/grid-gui?session=bl=1;cl=Grey;cm=Temperature%20(240K..341K);f=;fn=;ft=;g=751;gm=;hu=128;k=T2-K:ECBSF:5022:1:0:1:0;l=;lb=DarkSlateGrey;lcp=1;lm=LightGrey;lsl=128;lsp=2;lss=384;lt=;m=0;max=64;mi=Default;min=2;op=255;p=;pg=main;pi=19;pl=;pn=ECBSF;pre=Image;pro=;sa=60;sc=DarkSlateGrey;scp=1;sm=LightCyan;ssl=128;ssp=2;sss=384;st=14;t=;tg=;tgt=Year;u=;xx=;yy=;&p=T2-K| simple bias correction with 2000-2024 period|
+|CMIP6-ssp245 CMIP6-ssp585|CMIP6 bias-adjusted projections with original dataset - projections-cmip6 |hhttps://urban.geoss.space/grid-gui?session=bl=1;cl=Grey;cm=Temperature%20(240K..341K);f=41934;fn=1;ft=3;g=760;gm=5093;hu=128;k=T2-K:CMIP6-ssp245:5093:4:2:3:1;l=2;lb=DarkSlateGrey;lcp=1;lm=LightGrey;lsl=128;lsp=2;lss=384;lt=4;m=131;max=64;mi=Default;min=2;op=255;p=T2-K;pg=main;pi=50;pl=;pn=CMIP6-ssp245;pre=Image;pro=5093;sa=60;sc=DarkSlateGrey;scp=1;sm=LightCyan;ssl=128;ssp=2;sss=384;st=14;t=20260113T120000;tg=2026;tgt=Year;u=;xx=;yy=;&t=20260213T120000&f=41934&m=132&ft=3&fn=1|https://cds.climate.copernicus.eu/datasets/projections-cmip6|
 
 ## Variables
 
@@ -41,7 +50,7 @@ First climate model historical data 1995-2014 are merged with ssp245 data 2015-2
 Unfortunately not all models had ssp245 projections hence 3 models dropped completely out. Also not all variables were available from all models. Hence ensembles vary in size and the forecast number identifying models is the same only for AWI, BCC and CAMS models. The other models have numbers depending on the earlier models missing in the list. The numbers can be addressed to models according to this table.
 
 | Model | evaporation - evspsbl | relative humidity - hur | precipitation - pr | sea level pressure - psl | wind speed at 10m - sfcWind | air temperature at 2m - tas | minimum tas - mn2t24 | maximum tas - mx2t24 |
-|-------|---------|-----|----|----|---------|-----|--------|--------|
+|-------|-------|-------|-------|-------|-------|-------|-------|-------|
 | AWI-CM-1-1-MR | 1 | 1 | 1 | 1 | 1 | 1 | 1 | 1 |
 | BCC-CSM2-MR | 2 | - | 2 | 2 | 2 | 2 | 2 | 2 |
 | CAMS-CSM1-0 | - | - | 3 | 3 | - | 3 | - | - |
