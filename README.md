@@ -33,11 +33,12 @@ Aurora analysis has chosen these variables to be available from each source:
 The time scales available are mostly daily and for climate predictions monthly.
 Tallinn also requested for sea surface temperature and sea surface height.
 
-## Climate prediction models
+## Climate projection models
 
 20 models were fetched to be bias-adjusted/downscaled with ERA5 over the period 1995 to 2024. 
 The script doing the bias-adjustment is ![ba-cmip6-ensmble.sh](ba-cmip6-ensemble.sh). 
-First climate model historical data 1995-2014 are merged with ssp245 data 2015-2024. This data is then substracted with ERA5 timeseries of the same period at monthly time steps.
+First climate model historical data 1995-2014 are merged with ssp245 data 2015-2024. This data is then substracted with ERA5 timeseries of the same period at monthly time steps. Finally bias is added to both ssp245 and ssp585 projections and the models are combined as an ensemble for each scenario. 
+Unfortunately not all models had ssp245 projections hence 3 models dropped completely out. Also not all variables were available from all models. Hence ensembles vary in size and the forecast number identifying models is the same only for AWI, BCC and CAMS models. The other models have numbers depending on the earlier models missing in the list. The numbers can be addressed to models according to this table.
 
 | Model | evaporation - evspsbl | relative humidity - hur | precipitation - pr | sea level pressure - psl | wind speed at 10m - sfcWind | air temperature at 2m - tas | minimum tas - mn2t24 | maximum tas - mx2t24 |
 |-------|---------|-----|----|----|---------|-----|--------|--------|
@@ -60,7 +61,7 @@ First climate model historical data 1995-2014 are merged with ssp245 data 2015-2
 | TaiESM1 | 15 | 10 | 16 | 16 | 15 | 17 | - | - |
 
 
-# Using the Timeseries API for data in table format
+# Using the Timeseries API for retrieving data in table format
 
 The TimeSeries plugin can be used to fetch time series information for observation and forecast data, with specific time or time interval chosen by the user. The datasets can be downloaded with a HTTP request which contains the parameters needed to obtain the information, processing the results and formatting the output.
 For example, the following simple request fetches the 'total precipitation in meters (RR-M)' for Milan (lat 45.464664, lon 9.188540):
