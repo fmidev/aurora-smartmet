@@ -82,6 +82,10 @@ An example response for this query is shown below:
 
 ![timeseries output](https://github.com/fmidev/harmonia-smartmet/blob/main/example_timeseries_RR-M.png)
 
+Here is the timeseries request for all 17 models 2m-temperature timeseries for Tampere for 2024-2067 from ssp245, search and replace producer and variable string, start/endtimes and this is easy to adapt to other scenario and variables:
+
+https://urban.geoss.space/timeseries?latlon=61.4981,23.7608&param=utctime,latitude,longitude,mean(T2-K:CMIP6-ssp245:5093:4:2:3:1-17),T2-K:CMIP6-ssp245:5093:4:2:3:1,T2-K:CMIP6-ssp245:5093:4:2:3:2,T2-K:CMIP6-ssp245:5093:4:2:3:3,T2-K:CMIP6-ssp245:5093:4:2:3:4,T2-K:CMIP6-ssp245:5093:4:2:3:5,T2-K:CMIP6-ssp245:5093:4:2:3:6,T2-K:CMIP6-ssp245:5093:4:2:3:7,T2-K:CMIP6-ssp245:5093:4:2:3:8,T2-K:CMIP6-ssp245:5093:4:2:3:9,T2-K:CMIP6-ssp245:5093:4:2:3:10,T2-K:CMIP6-ssp245:5093:4:2:3:11,T2-K:CMIP6-ssp245:5093:4:2:3:12,T2-K:CMIP6-ssp245:5093:4:2:3:13,T2-K:CMIP6-ssp245:5093:4:2:3:14,T2-K:CMIP6-ssp245:5093:4:2:3:15,T2-K:CMIP6-ssp245:5093:4:2:3:16,T2-K:CMIP6-ssp245:5093:4:2:3:17&starttime=20240315T000000Z&endtime=20670320T000000Z&hour=00&format=ascii&precision=1&tz=utc&timeformat=sql&origintime=20000101T000000Z
+
 For more information and examples of the usage of the TimeSeries plugin, see SmartMet Server [Timeseries-plugin Wiki pages](https://github.com/fmidev/smartmet-plugin-timeseries/wiki). 
 
 # Using the WMS/Dali plugin for images
