@@ -106,7 +106,7 @@ For more information and examples of the usage of the TimeSeries plugin, see Sma
 
 ### Examples for CMIP6 data Timeseries retrieval 
 
-Example City Coordinates and Bounding Boxes
+Example City Coordinates and Bounding Boxes (from Claude, not verified!)
 
 | City | Country | Lat | Lon | BBox (min_lon, min_lat, max_lon, max_lat) |
 |---|---|---|---|---|
