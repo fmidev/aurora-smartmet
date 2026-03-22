@@ -72,17 +72,33 @@ Unfortunately not all models had ssp245 projections hence 3 models dropped compl
 # Using the Timeseries API for retrieving data in table format
 
 The TimeSeries plugin can be used to fetch time series information for observation and forecast data, with specific time or time interval chosen by the user. The datasets can be downloaded with a HTTP request which contains the parameters needed to obtain the information, processing the results and formatting the output.
-For example, the following simple request fetches the 'total precipitation in meters (RR-M)' for Milan (lat 45.464664, lon 9.188540):
+For example, the following simple request fetches the Skin temperature in Kelvins and Celsius for Tampere (1.5.2025-1.7.2025 for hours 12 and 18 daily):
 
-`https://urban.geoss.space/timeseries?lonlat=9.188540,45.464664&format=debug&param=name,time,RR-M:ERA5:5021:1:0:1&starttime=20220501T000000&precision=full`
+`https://urban.geoss.space/timeseries?latlon=61.4978,23.7610&format=debug&param=time,latitude,longitude,SKT-K:ERA5L:5078:1:0:1:0%20as%20Tampere%20skin%20temperature%20(K),K2C{SKT-K:ERA5L:5078:1:0:1:0}%20as%20Tampere%20skin%20temperature%20(C)&starttime=20250501T000000&endtime=20250701T000000&hour=12,18&precision=double`
 
-The service location that starts the HTTP request query is **urban.geoss.space**, and the parameters following it are given as name-value pairs separated by the ampersand (&) character. (Hint: copy the FMI key from the https://urban.geoss.space/grid-gui service for the parameter definition 'param'.)
+The service location that starts the HTTP request query is **urban.geoss.space**, and the parameters following it are given as name-value pairs separated by the ampersand (&) character. Hint: copy the FMI key from the https://urban.geoss.space/grid-gui service for the parameter definition 'param'. Here SKT-K:ERA5L:5078:1:0:1:0 is the fmi-key but we have renamed the columns in the output to whatever we want. 
 
 An example response for this query is shown below: 
 
 ![timeseries output](https://github.com/fmidev/harmonia-smartmet/blob/main/example_timeseries_RR-M.png)
 
 For more information and examples of the usage of the TimeSeries plugin, see SmartMet Server [Timeseries-plugin Wiki pages](https://github.com/fmidev/smartmet-plugin-timeseries/wiki). 
+
+## Examples for CMIP6 data Timeseries retrieval 
+
+Example City Coordinates and Bounding Boxes
+
+| City | Country | Lat | Lon | BBox (min_lat, min_lon, max_lat, max_lon) |
+|---|---|---|---|---|
+| Vilnius | Lithuania | 54.6872 | 25.2797 | 54.56, 25.02, 54.80, 25.50 |
+| Klaipėda | Lithuania | 55.7033 | 21.1443 | 55.65, 21.05, 55.75, 21.27 |
+| Joniškis | Lithuania | 56.2415 | 23.6136 | 56.21, 23.55, 56.27, 23.68 |
+| Riga | Latvia | 56.9496 | 24.1052 | 56.87, 23.97, 57.08, 24.32 |
+| Jūrmala | Latvia | 56.9683 | 23.7705 | 56.93, 23.57, 57.01, 23.97 |
+| Tallinn | Estonia | 59.4370 | 24.7536 | 59.35, 24.55, 59.52, 24.92 |
+| Pori | Finland | 61.4851 | 21.7975 | 61.42, 21.65, 61.55, 21.95 |
+| Tampere | Finland | 61.4978 | 23.7610 | 61.42, 23.58, 61.57, 23.95 |
+
 
 Here are call needed in Aurora to retrieve a timeseries from 2024 to 2067 for all models for the ssp245 scenario:
 [https://urban.geoss.space/timeseries?latlon=61.4981,23.7608&param=utctime,latitude,longitude,median(T2-K:CMIP6-ssp245:5093::::1-17),T2-K:CMIP6-ssp245:5093:4:2:3:1,T2-K:CMIP6-ssp245:5093:4:2:3:2,T2-K:CMIP6-ssp245:5093:4:2:3:3,T2-K:CMIP6-ssp245:5093:4:2:3:4,T2-K:CMIP6-ssp245:5093:4:2:3:5,T2-K:CMIP6-ssp245:5093:4:2:3:6,T2-K:CMIP6-ssp245:5093:4:2:3:7,T2-K:CMIP6-ssp245:5093:4:2:3:8,T2-K:CMIP6-ssp245:5093:4:2:3:9,T2-K:CMIP6-ssp245:5093:4:2:3:10,T2-K:CMIP6-ssp245:5093:4:2:3:11,T2-K:CMIP6-ssp245:5093:4:2:3:12,T2-K:CMIP6-ssp245:5093:4:2:3:13,T2-K:CMIP6-ssp245:5093:4:2:3:14,T2-K:CMIP6-ssp245:5093:4:2:3:15,T2-K:CMIP6-ssp245:5093:4:2:3:16,T2-K:CMIP6-ssp245:5093:4:2:3:17&starttime=20240315T000000Z&endtime=20670320T000000Z&timestep=1440&format=debug&precision=double&tz=utc&timeformat=sql&origintime=20000101T000000Z&day=15](https://urban.geoss.space/timeseries?latlon=61.4981,23.7608&param=utctime,latitude,longitude,median(T2-K:CMIP6-ssp245:5093::::1-17),T2-K:CMIP6-ssp245:5093:4:2:3:1,T2-K:CMIP6-ssp245:5093:4:2:3:2,T2-K:CMIP6-ssp245:5093:4:2:3:3,T2-K:CMIP6-ssp245:5093:4:2:3:4,T2-K:CMIP6-ssp245:5093:4:2:3:5,T2-K:CMIP6-ssp245:5093:4:2:3:6,T2-K:CMIP6-ssp245:5093:4:2:3:7,T2-K:CMIP6-ssp245:5093:4:2:3:8,T2-K:CMIP6-ssp245:5093:4:2:3:9,T2-K:CMIP6-ssp245:5093:4:2:3:10,T2-K:CMIP6-ssp245:5093:4:2:3:11,T2-K:CMIP6-ssp245:5093:4:2:3:12,T2-K:CMIP6-ssp245:5093:4:2:3:13,T2-K:CMIP6-ssp245:5093:4:2:3:14,T2-K:CMIP6-ssp245:5093:4:2:3:15,T2-K:CMIP6-ssp245:5093:4:2:3:16,T2-K:CMIP6-ssp245:5093:4:2:3:17&starttime=20240315T000000Z&endtime=20670320T000000Z&timestep=1440&format=debug&precision=double&tz=utc&timeformat=sql&origintime=20000101T000000Z&day=15)
