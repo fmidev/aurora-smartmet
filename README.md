@@ -76,11 +76,16 @@ For example, the following simple request fetches the Skin temperature in Kelvin
 
 `https://urban.geoss.space/timeseries?latlon=61.4978,23.7610&format=debug&param=time,latitude,longitude,SKT-K:ERA5L:5078:1:0:1:0 as Tampere skin temperature (K),K2C{SKT-K:ERA5L:5078:1:0:1:0} as Tampere skin temperature (C)&starttime=20250501T000000&endtime=20250701T000000&hour=12,18&precision=double`
 
-The service location that starts the HTTP request query is **urban.geoss.space**, and the parameters following it are given as name-value pairs separated by the ampersand (&) character. Hint: copy the FMI key from the https://urban.geoss.space/grid-gui service for the parameter definition 'param'. Here SKT-K:ERA5L:5078:1:0:1:0 is the fmi-key but we have renamed the columns in the output to whatever we want. 
+The service location that starts the HTTP request query is **urban.geoss.space**, and the parameters following it are given as name-value pairs separated by the ampersand (&) character. Hint: copy the FMI key from the https://urban.geoss.space/grid-gui service for the parameter definition 'param'. Here SKT-K:ERA5L:5078:1:0:1:0 is the fmi-key (highlighted with yellow in below Grid-GUI figure) but we have renamed the columns in the output to whatever we want. 
 
 An example response for this query is shown below: 
 
 ![timeseries output](example0.png)
+
+FMI-key can be copied from Grid-GUI (yellow)
+
+![GRIDGUI output](examplegridgui.png)
+
 
 For more information and examples of the usage of the TimeSeries plugin, see SmartMet Server [Timeseries-plugin Wiki pages](https://github.com/fmidev/smartmet-plugin-timeseries/wiki). 
 
