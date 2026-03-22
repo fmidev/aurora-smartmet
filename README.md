@@ -104,7 +104,7 @@ FMI-key can be copied from Grid-GUI (yellow)
 
 For more information and examples of the usage of the TimeSeries plugin, see SmartMet Server [Timeseries-plugin Wiki pages](https://github.com/fmidev/smartmet-plugin-timeseries/wiki) or [Simplified Documentation for CryoSCOPE project](https://github.com/fmidev/cryoscope-smart/blob/main/README.md) 
 
-### Examples for CMIP6 data Timeseries retrieval 
+### CMIP6 data Timeseries retrieval 
 
 Example City Coordinates and Bounding Boxes (from Claude, not verified!)
 
