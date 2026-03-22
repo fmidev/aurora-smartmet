@@ -8,7 +8,7 @@
    - [Variables](#variables)
    - [Climate Projection Models](#climate-projection-models)
 3. [Using the Timeseries API](#using-the-timeseries-api)
-   - [Examples for CMIP6 Data Timeseries Retrieval](#examples-for-cmip6-data-timeseries-retrieval)
+   - [CMIP6 Data Timeseries Retrieval](#cmip6-data-timeseries-retrieval)
 4. [Using the WMS/Dali Plugin for Images](#using-the-wmsdali-plugin-for-images)
 5. [OGC EDR Environmental Data Retrieval](#ogc-edr-environmental-data-retrieval)
 
