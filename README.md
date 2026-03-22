@@ -9,6 +9,7 @@
    - [Climate Projection Models](#climate-projection-models)
 3. [Using the Timeseries API](#using-the-timeseries-api)
    - [CMIP6 Data Timeseries Retrieval](#cmip6-data-timeseries-retrieval)
+   - [Example 1: CMIP6 SSP245 Average monthly temperature](#example-1-cmip6-ssp245-average-monthly-temperature)
 4. [Using the WMS/Dali Plugin for Images](#using-the-wmsdali-plugin-for-images)
 5. [OGC EDR Environmental Data Retrieval](#ogc-edr-environmental-data-retrieval)
 
