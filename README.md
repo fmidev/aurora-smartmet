@@ -74,7 +74,7 @@ Unfortunately not all models had ssp245 projections hence 3 models dropped compl
 The TimeSeries plugin can be used to fetch time series information for observation and forecast data, with specific time or time interval chosen by the user. The datasets can be downloaded with a HTTP request which contains the parameters needed to obtain the information, processing the results and formatting the output.
 For example, the following simple request fetches the Skin temperature in Kelvins and Celsius for Tampere (1.5.2025-1.7.2025 for hours 12 and 18 daily):
 
-`https://urban.geoss.space/timeseries?latlon=61.4978,23.7610&format=debug&param=time,latitude,longitude,SKT-K:ERA5L:5078:1:0:1:0%20as%20Tampere%20skin%20temperature%20(K),K2C{SKT-K:ERA5L:5078:1:0:1:0}%20as%20Tampere%20skin%20temperature%20(C)&starttime=20250501T000000&endtime=20250701T000000&hour=12,18&precision=double`
+`https://urban.geoss.space/timeseries?latlon=61.4978,23.7610&format=debug&param=time,latitude,longitude,SKT-K:ERA5L:5078:1:0:1:0 as Tampere skin temperature (K),K2C{SKT-K:ERA5L:5078:1:0:1:0} as Tampere skin temperature (C)&starttime=20250501T000000&endtime=20250701T000000&hour=12,18&precision=double`
 
 The service location that starts the HTTP request query is **urban.geoss.space**, and the parameters following it are given as name-value pairs separated by the ampersand (&) character. Hint: copy the FMI key from the https://urban.geoss.space/grid-gui service for the parameter definition 'param'. Here SKT-K:ERA5L:5078:1:0:1:0 is the fmi-key but we have renamed the columns in the output to whatever we want. 
 
