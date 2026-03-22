@@ -1,15 +1,32 @@
 # SmartMet-server for AURORA Clima project
 
+## Table of Contents
+
+1. [Overview](#overview)
+2. [Data Available for the AURORA Clima Project](#data-available-for-the-aurora\
+-clima-project)
+   - [Producers](#producers)
+   - [Variables](#variables)
+   - [Climate Projection Models](#climate-projection-models)
+3. [Using the Timeseries API](#using-the-timeseries-api)
+   - [Examples for CMIP6 Data Timeseries Retrieval](#examples-for-cmip6-data-ti\
+meseries-retrieval)
+4. [Using the WMS/Dali Plugin for Images](#using-the-wmsdali-plugin-for-images)
+5. [OGC EDR Environmental Data Retrieval](#ogc-edr-environmental-data-retrieval\
+)
+
+## Overview
+
 SmartMet Server is a data and product server which provides acces to both observation and forecast data. It is used for data services and product generation. Smartmet Server can read input from various sources and it provides several ouput interfaces and formats. For more detailed description, see the [SmartMet Server wiki pages](https://github.com/fmidev/smartmet-server/wiki). The setup used for AURORA is the same as in https://github.com/fmidev/harvesterseasons-smartmet/ installed in two different machines based on sponsored computing resources from WEkEO and EuroHPC.
 
 SmartMet Server purpose is a service to make data available directly to web apps without needing any data downloading and processing steps on a server. You can directly write javascript web apps to use Copernicus data. To get a feel for the data offered, go to https://urban.geoss.space/grid-gui . This is a general data browser. This service has datasets from several producers (f.ex. currently working: CMIP6-ssp245, ERA5, ECENS, ECSF, ECBSF). 
 
 For example web app code using a smartmet-server check out the https://github.com/fmidev/harvesterseasons-site repository and check out the service https://harvesterseasons.com.
 
-# Data available for the AURORA Clima project
+## Data available for the AURORA Clima project
 This is the place for meteorological model data to be used in AURORA. SmartMet-servers build the route to data via a hierarchy of producer-generation-variable
 
-## Producers
+### Producers
 ERA5 reanalysis data is available for analysing past conditions and building training data for machine learning. Generations 2000-01-01 and 1995-01-01 are available with the latter extending to 5 more years of data into the past. ERA5 is updated every day for the situation from 5 days ago.
 
 ECENS is the producer for weather forecast ensembles from the ECMWF model for 15-day forecasts.
@@ -28,7 +45,7 @@ Provenance table:
 |ECBSF|C3S bias-adjusted seasonal forecasts|[grid-gui ECBSF](https://urban.geoss.space/grid-gui?session=bl=1;cl=Grey;cm=Temperature%20(240K..341K);f=;fn=;ft=;g=751;gm=;hu=128;k=T2-K:ECBSF:5022:1:0:1:0;l=;lb=DarkSlateGrey;lcp=1;lm=LightGrey;lsl=128;lsp=2;lss=384;lt=;m=0;max=64;mi=Default;min=2;op=255;p=;pg=main;pi=19;pl=;pn=ECBSF;pre=Image;pro=;sa=60;sc=DarkSlateGrey;scp=1;sm=LightCyan;ssl=128;ssp=2;sss=384;st=14;t=;tg=;tgt=Year;u=;xx=;yy=;&p=T2-K)|[C3S dataset as above](https://cds.climate.copernicus.eu/datasets/seasonal-postprocessed-single-levels)|
 |CMIP6-ssp245 CMIP6-ssp585|CMIP6 bias-adjusted projections|[grid-gui CMIP6-ssp245](https://urban.geoss.space/grid-gui?session=bl=1;cl=Grey;cm=Temperature%20(240K..341K);f=41934;fn=1;ft=3;g=760;gm=5093;hu=128;k=T2-K:CMIP6-ssp245:5093:4:2:3:1;l=2;lb=DarkSlateGrey;lcp=1;lm=LightGrey;lsl=128;lsp=2;lss=384;lt=4;m=131;max=64;mi=Default;min=2;op=255;p=T2-K;pg=main;pi=50;pl=;pn=CMIP6-ssp245;pre=Image;pro=5093;sa=60;sc=DarkSlateGrey;scp=1;sm=LightCyan;ssl=128;ssp=2;sss=384;st=14;t=20260113T120000;tg=2026;tgt=Year;u=;xx=;yy=;&t=20260213T120000&f=41934&m=132&ft=3&fn=1)|[C3S projections-cmip6](https://cds.climate.copernicus.eu/datasets/projections-cmip6)|
 
-## Variables
+### Variables
 
 Aurora analysis has chosen these variables to be available from each source:
 - evaporation
@@ -41,7 +58,7 @@ Aurora analysis has chosen these variables to be available from each source:
 The time scales available are mostly daily and for climate predictions monthly.
 Tallinn also requested for sea surface temperature and sea surface height.
 
-## Climate projection models
+### Climate projection models
 
 20 models were fetched to be bias-adjusted/downscaled with ERA5 over the period 1995 to 2024. 
 The script doing the bias-adjustment is ![ba-cmip6-ensmble.sh](ba-cmip6-ensemble.sh). 
@@ -69,7 +86,7 @@ Unfortunately not all models had ssp245 projections hence 3 models dropped compl
 | TaiESM1 | 15 | 10 | 16 | 16 | 15 | 17 | - | - |
 
 
-# Using the Timeseries API for retrieving data in table format
+## Using the Timeseries API for retrieving data in table format
 
 The TimeSeries plugin can be used to fetch time series information for observation and forecast data, with specific time or time interval chosen by the user. The datasets can be downloaded with a HTTP request which contains the parameters needed to obtain the information, processing the results and formatting the output.
 For example, the following simple request fetches the Skin temperature in Kelvins and Celsius for Tampere (1.5.2025-1.7.2025 for hours 12 and 18 daily):
@@ -89,20 +106,20 @@ FMI-key can be copied from Grid-GUI (yellow)
 
 For more information and examples of the usage of the TimeSeries plugin, see SmartMet Server [Timeseries-plugin Wiki pages](https://github.com/fmidev/smartmet-plugin-timeseries/wiki) or [Simplified Documentation for CryoSCOPE project](https://github.com/fmidev/cryoscope-smart/blob/main/README.md) 
 
-## Examples for CMIP6 data Timeseries retrieval 
+### Examples for CMIP6 data Timeseries retrieval 
 
 Example City Coordinates and Bounding Boxes
 
-| City | Country | Lat | Lon | BBox (min_lat, min_lon, max_lat, max_lon) |
+| City | Country | Lat | Lon | BBox (min_lon, min_lat, max_lon, max_lat) |
 |---|---|---|---|---|
-| Vilnius | Lithuania | 54.6872 | 25.2797 | 54.56, 25.02, 54.80, 25.50 |
-| Klaipėda | Lithuania | 55.7033 | 21.1443 | 55.65, 21.05, 55.75, 21.27 |
-| Joniškis | Lithuania | 56.2415 | 23.6136 | 56.21, 23.55, 56.27, 23.68 |
-| Riga | Latvia | 56.9496 | 24.1052 | 56.87, 23.97, 57.08, 24.32 |
-| Jūrmala | Latvia | 56.9683 | 23.7705 | 56.93, 23.57, 57.01, 23.97 |
-| Tallinn | Estonia | 59.4370 | 24.7536 | 59.35, 24.55, 59.52, 24.92 |
-| Pori | Finland | 61.4851 | 21.7975 | 61.42, 21.65, 61.55, 21.95 |
-| Tampere | Finland | 61.4978 | 23.7610 | 61.42, 23.58, 61.57, 23.95 |
+| Vilnius | Lithuania | 54.6872 | 25.2797 | 25.02, 54.56, 25.50, 54.80 |
+| Klaipėda | Lithuania | 55.7033 | 21.1443 | 21.05, 55.65, 21.27, 55.75 |
+| Joniškis | Lithuania | 56.2415 | 23.6136 | 23.55, 56.21, 23.68, 56.27 |
+| Riga | Latvia | 56.9496 | 24.1052 | 23.97, 56.87, 24.32, 57.08 |
+| Jūrmala | Latvia | 56.9683 | 23.7705 | 23.57, 56.93, 23.97, 57.01 |
+| Tallinn | Estonia | 59.4370 | 24.7536 | 24.55, 59.35, 24.92, 59.52 |
+| Pori | Finland | 61.4851 | 21.7975 | 21.65, 61.42, 21.95, 61.55 |
+| Tampere | Finland | 61.4978 | 23.7610 | 23.58, 61.42, 23.95, 61.57 |
 
 Here is an example call to retrieve average monthly temperature in degrees Celsius CMIP6 SSP245 and SSP585 scenarios for all cities (points) from 2026 to 2036 for all models, renaming columns (model names corresponding to forecast numbers e.g. last number in FMI-key can be seen from grib file names if you choose "Presentation: Info" in grid-gui view):
 
@@ -112,7 +129,10 @@ Output from this looks like:
 
 ![example2 output](example2.png)
 
-[https://urban.geoss.space/timeseries?latlon=61.4981,23.7608&param=utctime,latitude,longitude,median(T2-K:CMIP6-ssp245:5093::::1-17),T2-K:CMIP6-ssp245:5093:4:2:3:1,T2-K:CMIP6-ssp245:5093:4:2:3:2,T2-K:CMIP6-ssp245:5093:4:2:3:3,T2-K:CMIP6-ssp245:5093:4:2:3:4,T2-K:CMIP6-ssp245:5093:4:2:3:5,T2-K:CMIP6-ssp245:5093:4:2:3:6,T2-K:CMIP6-ssp245:5093:4:2:3:7,T2-K:CMIP6-ssp245:5093:4:2:3:8,T2-K:CMIP6-ssp245:5093:4:2:3:9,T2-K:CMIP6-ssp245:5093:4:2:3:10,T2-K:CMIP6-ssp245:5093:4:2:3:11,T2-K:CMIP6-ssp245:5093:4:2:3:12,T2-K:CMIP6-ssp245:5093:4:2:3:13,T2-K:CMIP6-ssp245:5093:4:2:3:14,T2-K:CMIP6-ssp245:5093:4:2:3:15,T2-K:CMIP6-ssp245:5093:4:2:3:16,T2-K:CMIP6-ssp245:5093:4:2:3:17&starttime=20240315T000000Z&endtime=20670320T000000Z&timestep=1440&format=debug&precision=double&tz=utc&timeformat=sql&origintime=20000101T000000Z&day=15](https://urban.geoss.space/timeseries?latlon=61.4981,23.7608&param=utctime,latitude,longitude,median(T2-K:CMIP6-ssp245:5093::::1-17),T2-K:CMIP6-ssp245:5093:4:2:3:1,T2-K:CMIP6-ssp245:5093:4:2:3:2,T2-K:CMIP6-ssp245:5093:4:2:3:3,T2-K:CMIP6-ssp245:5093:4:2:3:4,T2-K:CMIP6-ssp245:5093:4:2:3:5,T2-K:CMIP6-ssp245:5093:4:2:3:6,T2-K:CMIP6-ssp245:5093:4:2:3:7,T2-K:CMIP6-ssp245:5093:4:2:3:8,T2-K:CMIP6-ssp245:5093:4:2:3:9,T2-K:CMIP6-ssp245:5093:4:2:3:10,T2-K:CMIP6-ssp245:5093:4:2:3:11,T2-K:CMIP6-ssp245:5093:4:2:3:12,T2-K:CMIP6-ssp245:5093:4:2:3:13,T2-K:CMIP6-ssp245:5093:4:2:3:14,T2-K:CMIP6-ssp245:5093:4:2:3:15,T2-K:CMIP6-ssp245:5093:4:2:3:16,T2-K:CMIP6-ssp245:5093:4:2:3:17&starttime=20240315T000000Z&endtime=20670320T000000Z&timestep=1440&format=debug&precision=double&tz=utc&timeformat=sql&origintime=20000101T000000Z&day=15)
+Note that if you want to fetch data for one single location (lat,lon pair) per request, use `latlon` instead of `latlons`in HTTP query. You can also request data for area defined by `bbox`, simple `bbox` example below for Tampere (note that order is lon1,lat1,lon2,lat2) which returns data for all available grid points inside given bounding box: 
+
+`https://urban.geoss.space/timeseries?bbox=23.58,61.42,23.95,61.57&format=json&param=time,latitude,longitude,SKT-K:ERA5L:5078:1:0:1:0%20as%20Tampere%20skin%20temperature%20(K),K2C{SKT-K:ERA5L:5078:1:0:1:0}%20as%20Tampere%20skin%20temperature%20(C)&starttime=20250501T000000&endtime=20250701T000000&hour=12,18&precision=double`
+
 
 Here are calls for each CMIP6 variable that returns a csv file for the 2024 to 2099 years:
 - T2-K average temperature: [https://urban.geoss.space/timeseries?latlon=61.4981,23.7608&param=utctime,latitude,longitude,median(T2-K:CMIP6-ssp245:5093::::1-17),T2-K:CMIP6-ssp245:5093:4:2:3:1,T2-K:CMIP6-ssp245:5093:4:2:3:2,T2-K:CMIP6-ssp245:5093:4:2:3:3,T2-K:CMIP6-ssp245:5093:4:2:3:4,T2-K:CMIP6-ssp245:5093:4:2:3:5,T2-K:CMIP6-ssp245:5093:4:2:3:6,T2-K:CMIP6-ssp245:5093:4:2:3:7,T2-K:CMIP6-ssp245:5093:4:2:3:8,T2-K:CMIP6-ssp245:5093:4:2:3:9,T2-K:CMIP6-ssp245:5093:4:2:3:10,T2-K:CMIP6-ssp245:5093:4:2:3:11,T2-K:CMIP6-ssp245:5093:4:2:3:12,T2-K:CMIP6-ssp245:5093:4:2:3:13,T2-K:CMIP6-ssp245:5093:4:2:3:14,T2-K:CMIP6-ssp245:5093:4:2:3:15,T2-K:CMIP6-ssp245:5093:4:2:3:16,T2-K:CMIP6-ssp245:5093:4:2:3:17&starttime=20240115T000000Z&endtime=20991231T000000Z&timestep=1440&format=csv&precision=double&tz=utc&timeformat=sql&origintime=20000101T000000Z&day=15](https://urban.geoss.space/timeseries?latlon=61.4981,23.7608&param=utctime,latitude,longitude,median(T2-K:CMIP6-ssp245:5093::::1-17),T2-K:CMIP6-ssp245:5093:4:2:3:1,T2-K:CMIP6-ssp245:5093:4:2:3:2,T2-K:CMIP6-ssp245:5093:4:2:3:3,T2-K:CMIP6-ssp245:5093:4:2:3:4,T2-K:CMIP6-ssp245:5093:4:2:3:5,T2-K:CMIP6-ssp245:5093:4:2:3:6,T2-K:CMIP6-ssp245:5093:4:2:3:7,T2-K:CMIP6-ssp245:5093:4:2:3:8,T2-K:CMIP6-ssp245:5093:4:2:3:9,T2-K:CMIP6-ssp245:5093:4:2:3:10,T2-K:CMIP6-ssp245:5093:4:2:3:11,T2-K:CMIP6-ssp245:5093:4:2:3:12,T2-K:CMIP6-ssp245:5093:4:2:3:13,T2-K:CMIP6-ssp245:5093:4:2:3:14,T2-K:CMIP6-ssp245:5093:4:2:3:15,T2-K:CMIP6-ssp245:5093:4:2:3:16,T2-K:CMIP6-ssp245:5093:4:2:3:17&starttime=20240115T000000Z&endtime=20991231T000000Z&timestep=1440&format=csv&precision=double&tz=utc&timeformat=sql&origintime=20000101T000000Z&day=15)
@@ -127,7 +147,7 @@ Here are calls for each CMIP6 variable that returns a csv file for the 2024 to 2
 
 Search and replace here the latlon location, start/end times, variable string for scenario and variable (check them out on grid-gui with links above) and collect other places to csv files with headers.
 
-# Using the WMS/Dali plugin for images
+## Using the WMS/Dali plugin for images
 
 Dali is the engine to make images from smartmet-server internal data. It can be used directly or with appropriate layer definitions can provide an OGC compliant WebMapService interface. Open Geospatial Consortiums (OGC) Web Map Service (WMS) offers a convenient way for generating map images from a map server over the Web using the HTTP protocol. Several image products can be generated using the SmartMet Server WMS plugin. 
 
@@ -139,5 +159,5 @@ Available WMS 'LAYERS' can be checked with the GetCapabilities request as follow
 
 `https://urban.geoss.space/wms?SERVICE=WMS&VERSION=1.3.0&REQUEST=GetCapabilities`
 
-# A new API for sophisticated data retrieval OGC EDR Environmental Data Retrieval
+## A new API for sophisticated data retrieval OGC EDR Environmental Data Retrieval
 https://ogcapi.ogc.org/edr/ is a new API to get data in CoverageJSON or GeoJson formats with a restful service. Check out https://urban.geoss.space/edr/collections for this cool new feature.
