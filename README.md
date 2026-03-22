@@ -10,7 +10,7 @@
 3. [Using the Timeseries API](#using-the-timeseries-api)
    - [CMIP6 Data Timeseries Retrieval](#cmip6-data-timeseries-retrieval)
    - [Example 1: CMIP6 SSP245 Average monthly temperature](#example-1-cmip6-ssp245-average-monthly-temperature)
-   - [Example 2: CMIP6 SSP245 Average monthly maximum temperature](#example-1-cmip6-ssp245-average-monthly-maximum-temperature)
+   - [Example 2: CMIP6 SSP245 Average monthly maximum temperature](#example-2-cmip6-ssp245-average-monthly-maximum-temperature)
    - [Example 3: CMIP6 SSP245 Average monthly temperature](#example-1-cmip6-ssp245-average-monthly-temperature)
    - [Example 4: CMIP6 SSP245 Average monthly temperature](#example-1-cmip6-ssp245-average-monthly-temperature)
    - [Example 5: CMIP6 SSP245 Average monthly temperature](#example-1-cmip6-ssp245-average-monthly-temperature)
