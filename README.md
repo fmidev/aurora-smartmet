@@ -3,17 +3,14 @@
 ## Table of Contents
 
 1. [Overview](#overview)
-2. [Data Available for the AURORA Clima Project](#data-available-for-the-aurora\
--clima-project)
+2. [Data Available for the AURORA Clima Project](#data-available-for-the-aurora-clima-projectdata-available-for-the-aurora-clima-project)
    - [Producers](#producers)
    - [Variables](#variables)
    - [Climate Projection Models](#climate-projection-models)
 3. [Using the Timeseries API](#using-the-timeseries-api)
-   - [Examples for CMIP6 Data Timeseries Retrieval](#examples-for-cmip6-data-ti\
-meseries-retrieval)
+   - [Examples for CMIP6 Data Timeseries Retrieval](#examples-for-cmip6-data-timeseries-retrieval)
 4. [Using the WMS/Dali Plugin for Images](#using-the-wmsdali-plugin-for-images)
-5. [OGC EDR Environmental Data Retrieval](#ogc-edr-environmental-data-retrieval\
-)
+5. [OGC EDR Environmental Data Retrieval](#ogc-edr-environmental-data-retrieval)
 
 ## Overview
 
