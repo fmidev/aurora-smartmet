@@ -139,7 +139,7 @@ Note that if you want to fetch data for one single location (lat,lon pair) per r
 
 https://urban.geoss.space/timeseries?bbox=23.58,61.42,23.95,61.57&format=json&param=time,latitude,longitude,SKT-K:ERA5L:5078:1:0:1:0%20as%20Tampere%20skin%20temperature%20(K),K2C{SKT-K:ERA5L:5078:1:0:1:0}%20as%20Tampere%20skin%20temperature%20(C)&starttime=20250501T000000&endtime=20250701T000000&hour=12,18&precision=double
 
-The eight examples below return a csv file for each HTTP request. 
+The eight examples below return a csv file for each HTTP request. If you want to check the result in browser before downloading the csv file, change `format=csv`to `format=debug` f.ex. 
 
 #### Example 1: CMIP6 SSP245 Average monthly temperature
 
