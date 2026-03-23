@@ -28,6 +28,8 @@ SmartMet Server purpose is a service to make data available directly to web apps
 
 For example web app code using a smartmet-server check out the https://github.com/fmidev/harvesterseasons-site repository and check out the service https://harvesterseasons.com.
 
+Check out also [Simplified SmartMet server documentation](https://github.com/fmidev/cryoscope-smart/blob/main/README.md) (the CryoSCOPE project).
+
 ## Data available for the AURORA Clima project
 This is the place for meteorological model data to be used in AURORA. SmartMet-servers build the route to data via a hierarchy of producer-generation-variable
 
