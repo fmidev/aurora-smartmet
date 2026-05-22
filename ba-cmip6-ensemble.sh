@@ -21,6 +21,7 @@ cd /home/ubuntu/data/cmip6
 #   {1}_19950101T000000_20241231T000000-${nvar}-fix.nc {1}_19950101T000000_20241231T000000-${nvar}.grib :::: models-${nvar}.lst \
 wait
 # script then calculates the bias and variance of the merged data against ERA5 dataset for the specified variable, and outputs the results in GRIB format.
+# don't let the name of the eera5 file mislead you for the rh in the name. All variables from ERA5 needed to match the CMIP6 ones are included.
 cd ..
 [[ ! -s cmip6/eera5-TaiESM1_19950101T000000_${nvar}_bias_eu.grib ]] && \
  parallel calc_bias_var.sh eera5_1995-2025_mon-rh-eu.grib {} ${nvar} $evar $eevar ::: cmip6/*_1995*${nvar}.nc
